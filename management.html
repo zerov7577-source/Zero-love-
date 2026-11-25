@@ -1,1 +1,89 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171321">
+  <title>ZERO LOVE Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>👑 ZERO LOVE</h1>
+  <span>Official Management Dashboard</span>
+</header>
+
+<main>
+
+  <section class="card">
+    <h2>👑 OWNER</h2>
+    <h3>MR. ZERO</h3>
+    <p>Owner of ZERO LOVE</p>
+  </section>
+
+  <section class="card">
+    <h2>⭐ MAIN MANAGEMENT</h2>
+    <h3>MC JAY</h3>
+    <p>Main Management</p>
+  </section>
+
+  <section class="card">
+    <h2>💎 MANAGER</h2>
+    <h3>MR. PRIMO MANAGER OFFICIAL</h3>
+    <p>Manager Profile</p>
+  </section>
+
+  <section class="card">
+    <h2>🏢 AGENCY MANAGEMENT</h2>
+    <p>Manage agencies and agency information.</p>
+  </section>
+
+  <section class="card">
+    <h2>👥 AGENT MANAGEMENT</h2>
+    <p>Manage agents and agent information.</p>
+  </section>
+
+  <section class="card">
+    <h2>❤️ USER MANAGEMENT</h2>
+    <p>User Management Dashboard</p>
+  </section>
+
+  <section class="card">
+    <h2>🪙 COINS & WALLET</h2>
+    <p>Wallet and coin overview</p>
+  </section>
+
+  <section class="card">
+    <h2>⚙️ SYSTEM STATUS</h2>
+    <p id="systemStatus">Checking server...</p>
+    <button onclick="checkServer()">Check Server</button>
+  </section>
+
+  <a href="index.html">🏠 Back to ZERO LOVE</a>
+
+</main>
+
+<script>
+async function checkServer() {
+  const status = document.getElementById("systemStatus");
+
+  try {
+    const response = await fetch("/api/status");
+    const data = await response.json();
+
+    status.textContent = data.status === "online"
+      ? "ZERO LOVE SERVER ONLINE ❤️"
+      : "Server unavailable";
+  } catch (error) {
+    status.textContent = "Cannot connect to server.";
+  }
+}
+
+checkServer();
+</script>
+
+</body>
+</html>
+
